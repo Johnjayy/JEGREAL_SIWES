@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin="" />
+    <link rel="stylesheet" href="./lib/leaflet.fullscreen.css">
+    <link rel="stylesheet" href="./leaflet/MarkerCluster.css">
+    <link rel="stylesheet" href="./leaflet/MarkerCluster.Default.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <title>Document</title>
+</head>
+<body>
+  
+  <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: black;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#" style="color: aliceblue;"><b>KANO STATE</b></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="background-color: aliceblue;">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="../index.html" style="color: aliceblue;"><b>AJINGI MARKET</b></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../index.html" style="color: aliceblue;">HOME</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: aliceblue;">
+              LGAs
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="../siwes-main/ajingi.html">AJINGI</a></li>
+              <li><a class="dropdown-item" href="#">ALBASU</a></li>
+              <li><a class="dropdown-item" href="#">BAGWAI</a></li>
+              <li><a class="dropdown-item" href="#">BEBEJI</a></li>
+              <li><a class="dropdown-item" href="#">BICHI</a></li>
+              <li><a class="dropdown-item" href="#">BUNKURE</a></li>
+              <li><a class="dropdown-item" href="#">DAWAKIN KUDU</a></li>
+              <li><a class="dropdown-item" href="#">GABASAWA</a></li>
+              <li><a class="dropdown-item" href="#">GARUN MALAM</a></li>
+              <li><a class="dropdown-item" href="#">GEZAWA</a></li>
+              <li><a class="dropdown-item" href="#">GWARZO</a></li>
+              <li><a class="dropdown-item" href="#">KARAYE</a></li>
+              <li><a class="dropdown-item" href="#">KIBIYA</a></li>
+              <li><a class="dropdown-item" href="#">KIRU</a></li>
+              <li><a class="dropdown-item" href="#">KUNCHI</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: aliceblue;">
+              INFRASTRUCTURES
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">MARKET</a></li>
+              <li><a class="dropdown-item" href="#">SCHOOL</a></li>
+              <li><a class="dropdown-item" href="#">HOSPITAL</a></li>
+              <li><a class="dropdown-item" href="#">MOTOR PARK</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+
+    <div id="map">
+        <!-- map coordinate -->
+        <div class="leaflet-control map-coordinate">
+            <div class="coordinate"></div>
+        </div>
+        <div class="leaflet-control zoom-to-layer">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1.6em" height="1.6em" fill="currentColor" class="bi bi-house-door" viewBox="0 0 16 16">
+                <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146ZM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5Z"/>
+              </svg>
+        </div>
+    </div>
+    <!-- <button onclick=fullScreenview()>View in full screen</button>  -->
+<!-- zoom to layer -->
+
+
+   <!-- <button class="zoom-to-layer">Zoom to Layer</button> -->
+   <footer style="background-color: black; color: aliceblue; text-align: center; padding: 2px;"> <b> &copy;  JEGRAL COMPANY </b> </footer>
+</body>
+</html>
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin=""></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="./lib/leaflet.browser.print.min.js"></script>
+<script src="./lib/Leaflet.fullscreen.min.js"></script>
+<script src="./leaflet/leaflet.markercluster.js"></script>
+<script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+<script src="./test.js"></script>
+<script>
+    // map class initialize
+    var map = L.map('map').setView([11.978837, 9.07074], 12);
+    map.zoomControl.setPosition('topright');
+
+    //adding osm tilelayer
+    var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+var TopoMap = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+	maxZoom: 17,
+	attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+});
+
+var OpenStreetMap = L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+	maxZoom: 20,
+	attribution: '&copy; OpenStreetMap France | &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+});
+
+
+
+//Adding marker in the center of the map
+// L.marker([12.0022, 8.5920]).addTo(map)
+//     .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+//     .openPopup();
+
+    // add map scale
+    L.control.scale().addTo(map)
+
+    
+    // Full screen map
+    var mapId = document.getElementById('map');
+    function fullScreenview(){
+        mapId.requestFullscreen();
+    }
+    
+
+  
+// // Create a new map with a fullscreen button:
+// var map = new L.Map('map', {
+//     fullscreenControl: true,
+//     // OR
+//     fullscreenControl: {
+//         pseudoFullscreen: false // if true, fullscreen to page width and height
+//     }
+// });
+
+// school coordinates
+var myIcon3 = L.icon({
+    iconUrl: './img/market.png',
+    iconSize: [14, 14],
+});
+
+L.marker([11.87446,	7.97782], {icon: myIcon3}).addTo(map);
+L.marker([11.67708,	8.260694], {icon: myIcon3}).addTo(map);
+L.marker([11.99286,	8.930655], {icon: myIcon3}).addTo(map);
+L.marker([11.249482,	8.399371], {icon: myIcon3}).addTo(map);
+L.marker([11.763783,	8.423134], {icon: myIcon3}).addTo(map);
+L.marker([11.626672,	7.882759], {icon: myIcon3}).addTo(map);
+L.marker([11.99584,	9.165941], {icon: myIcon3}).addTo(map);
+L.marker([11.250159,	8.401531], {icon: myIcon3}).addTo(map);
+L.marker([11.438511,	7.838014], {icon: myIcon3}).addTo(map);
+L.marker([11.867593,	7.867733], {icon: myIcon3}).addTo(map);
+L.marker([12.072581,	8.167152], {icon: myIcon3}).addTo(map);
+L.marker([12.153647,	8.138624], {icon: myIcon3}).addTo(map);
+L.marker([11.546128,	7.825255], {icon: myIcon3}).addTo(map);
+L.marker([11.56912,	7.753116], {icon: myIcon3}).addTo(map);
+L.marker([11.393597,	7.861335], {icon: myIcon3}).addTo(map);
+L.marker([11.406503,	8.270143], {icon: myIcon3}).addTo(map);
+L.marker([11.878182,	7.977325], {icon: myIcon3}).addTo(map);
+L.marker([12.13748,	8.197431], {icon: myIcon3}).addTo(map);
+L.marker([11.265298,	8.567082], {icon: myIcon3}).addTo(map);
+L.marker([11.518544,	8.372382], {icon: myIcon3}).addTo(map);
+L.marker([12.190209,	8.017888], {icon: myIcon3}).addTo(map);
+L.marker([12.046327,	8.982184], {icon: myIcon3}).addTo(map);
+L.marker([11.965051,	9.042351], {icon: myIcon3}).addTo(map);
+L.marker([11.897177,	8.621202], {icon: myIcon3}).addTo(map);
+L.marker([11.896109,	8.664903], {icon: myIcon3}).addTo(map);
+L.marker([12.015733,	8.15881], {icon: myIcon3}).addTo(map);
+L.marker([11.587541,	7.933659], {icon: myIcon3}).addTo(map);
+L.marker([11.839435,	8.600984], {icon: myIcon3}).addTo(map);
+L.marker([11.505901,	7.692361], {icon: myIcon3}).addTo(map);
+L.marker([11.792456,	8.640908], {icon: myIcon3}).addTo(map);
+L.marker([11.822446,	8.495227], {icon: myIcon3}).addTo(map);
+L.marker([11.831145,	8.506365], {icon: myIcon3}).addTo(map);
+L.marker([12.151417,	8.069022], {icon: myIcon3}).addTo(map);
+L.marker([11.380654,	7.75891], {icon: myIcon3}).addTo(map);
+L.marker([11.39369,	8.674424], {icon: myIcon3}).addTo(map);
+L.marker([11.789252,	8.52116], {icon: myIcon3}).addTo(map);
+L.marker([11.868208,	8.707453], {icon: myIcon3}).addTo(map);
+L.marker([12.071002,	8.462374], {icon: myIcon3}).addTo(map);
+L.marker([12.049733,	8.580616], {icon: myIcon3}).addTo(map);
+L.marker([12.122843,	8.185532], {icon: myIcon3}).addTo(map);
+L.marker([12.055435,	8.606755], {icon: myIcon3}).addTo(map);
+L.marker([12.075582,	8.616856], {icon: myIcon3}).addTo(map);
+L.marker([11.835716,	8.58982], {icon: myIcon3}).addTo(map);
+L.marker([11.836845,	8.590587], {icon: myIcon3}).addTo(map);
+L.marker([11.858399,	8.544435], {icon: myIcon3}).addTo(map);
+L.marker([11.863299,	8.538505], {icon: myIcon3}).addTo(map);
+L.marker([12.298647,	7.984145], {icon: myIcon3}).addTo(map);
+L.marker([11.890602,	8.505345], {icon: myIcon3}).addTo(map);
+L.marker([12.174704,	8.656794], {icon: myIcon3}).addTo(map);
+L.marker([11.557948,	8.579945], {icon: myIcon3}).addTo(map);
+L.marker([11.942182,	8.31327], {icon: myIcon3}).addTo(map);
+L.marker([11.876288,	8.749065], {icon: myIcon3}).addTo(map);
+L.marker([12.504149,	8.302355], {icon: myIcon3}).addTo(map);
+L.marker([12.363971,	8.40537], {icon: myIcon3}).addTo(map);
+L.marker([12.144405,	8.597058], {icon: myIcon3}).addTo(map);
+L.marker([12.130632,	7.958023], {icon: myIcon3}).addTo(map);
+L.marker([11.969221,	8.243728], {icon: myIcon3}).addTo(map);
+L.marker([11.86505,	8.299609], {icon: myIcon3}).addTo(map);
+L.marker([12.096823,	8.881919], {icon: myIcon3}).addTo(map);
+L.marker([11.413448,	8.482147], {icon: myIcon3}).addTo(map);
+L.marker([11.651169,	8.188291], {icon: myIcon3}).addTo(map);
+L.marker([12.453284,	8.240227], {icon: myIcon3}).addTo(map);
+L.marker([12.353064,	8.380812], {icon: myIcon3}).addTo(map);
+L.marker([11.943718,	8.610715], {icon: myIcon3}).addTo(map);
+L.marker([12.224124,	8.709167], {icon: myIcon3}).addTo(map);
+L.marker([12.095894,	8.756194], {icon: myIcon3}).addTo(map);
+L.marker([11.945545,	8.612502], {icon: myIcon3}).addTo(map);
+L.marker([11.689174,	8.369983], {icon: myIcon3}).addTo(map);
+L.marker([11.676667,	8.421966], {icon: myIcon3}).addTo(map);
+L.marker([11.926743,	8.767163], {icon: myIcon3}).addTo(map);
+L.marker([12.051354,	8.273538], {icon: myIcon3}).addTo(map);
+L.marker([11.615137,	9.216575], {icon: myIcon3}).addTo(map);
+L.marker([11.919375,	8.26791], {icon: myIcon3}).addTo(map);
+L.marker([11.895326,	8.378486], {icon: myIcon3}).addTo(map);
+L.marker([12.026341,	8.695275], {icon: myIcon3}).addTo(map);
+L.marker([12.022787,	8.70341], {icon: myIcon3}).addTo(map);
+L.marker([12.15798,	7.871616], {icon: myIcon3}).addTo(map);
+L.marker([12.092756,	7.877394], {icon: myIcon3}).addTo(map);
+L.marker([12.196599,	8.591937], {icon: myIcon3}).addTo(map);
+L.marker([12.240796,	8.515881], {icon: myIcon3}).addTo(map);
+L.marker([12.245233,	8.596308], {icon: myIcon3}).addTo(map);
+L.marker([12.056717,	8.85059], {icon: myIcon3}).addTo(map);
+L.marker([12.241323,	8.83002], {icon: myIcon3}).addTo(map);
+L.marker([12.401251,	8.313136], {icon: myIcon3}).addTo(map);
+L.marker([12.373079,	8.281983], {icon: myIcon3}).addTo(map);
+L.marker([11.539378,	8.073349], {icon: myIcon3}).addTo(map);
+L.marker([12.137163,	8.548022], {icon: myIcon3}).addTo(map);
+L.marker([12.418981,	8.170207], {icon: myIcon3}).addTo(map);
+L.marker([12.418981,	8.170207], {icon: myIcon3}).addTo(map);
+L.marker([12.336281,	8.445475], {icon: myIcon3}).addTo(map);
+L.marker([12.379502,	8.455574], {icon: myIcon3}).addTo(map);
+L.marker([12.372172,	8.438199], {icon: myIcon3}).addTo(map);
+L.marker([11.991825,	8.660244], {icon: myIcon3}).addTo(map);
+L.marker([11.8943,	8.857051], {icon: myIcon3}).addTo(map);
+L.marker([11.958209,	8.780892], {icon: myIcon3}).addTo(map);
+L.marker([11.665063,	9.209927], {icon: myIcon3}).addTo(map);
+L.marker([11.46881,	8.505306], {icon: myIcon3}).addTo(map);
+L.marker([12.429588,	8.355381], {icon: myIcon3}).addTo(map);
+L.marker([12.413598,	8.328229], {icon: myIcon3}).addTo(map);
+L.marker([12.232339,	8.24342], {icon: myIcon3}).addTo(map);
+L.marker([12.235241,	8.237179], {icon: myIcon3}).addTo(map);
+L.marker([12.092916,	7.877856], {icon: myIcon3}).addTo(map);
+L.marker([12.18498,	7.929919], {icon: myIcon3}).addTo(map);
+L.marker([11.498347,	8.668722], {icon: myIcon3}).addTo(map);
+L.marker([12.037098,	8.765368], {icon: myIcon3}).addTo(map);
+L.marker([11.643208,	8.651408], {icon: myIcon3}).addTo(map);
+L.marker([11.481515,	8.580703], {icon: myIcon3}).addTo(map);
+L.marker([11.538186,	8.49901], {icon: myIcon3}).addTo(map);
+L.marker([11.581012,	8.615246], {icon: myIcon3}).addTo(map);
+L.marker([11.534658,	8.152709], {icon: myIcon3}).addTo(map);
+L.marker([12.578579,	8.241962], {icon: myIcon3}).addTo(map);
+L.marker([11.699024,	8.130699], {icon: myIcon3}).addTo(map);
+L.marker([11.750128,	8.204422], {icon: myIcon3}).addTo(map);
+L.marker([12.39222,	8.347692], {icon: myIcon3}).addTo(map);
+L.marker([11.570973,	8.718423], {icon: myIcon3}).addTo(map);
+L.marker([11.992099,	8.816048], {icon: myIcon3}).addTo(map);
+L.marker([12.165102,	8.890112], {icon: myIcon3}).addTo(map);
+L.marker([12.177748,	8.90943], {icon: myIcon3}).addTo(map);
+L.marker([11.692494,	8.70344], {icon: myIcon3}).addTo(map);
+L.marker([12.051714,	7.988901], {icon: myIcon3}).addTo(map);
+L.marker([12.096892,	8.881941], {icon: myIcon3}).addTo(map);
+L.marker([11.9675,	8.400088], {icon: myIcon3}).addTo(map);
+L.marker([11.667769,	9.138115], {icon: myIcon3}).addTo(map);
+L.marker([12.308064,	8.31487], {icon: myIcon3}).addTo(map);
+L.marker([12.320406,	8.338538], {icon: myIcon3}).addTo(map);
+L.marker([11.460983,	8.199879], {icon: myIcon3}).addTo(map);
+L.marker([12.317909,	8.52286], {icon: myIcon3}).addTo(map);
+L.marker([12.328261,	8.523713], {icon: myIcon3}).addTo(map);
+L.marker([12.262956,	8.52762], {icon: myIcon3}).addTo(map);
+L.marker([12.057743,	8.658909], {icon: myIcon3}).addTo(map);
+L.marker([11.615082,	9.21651], {icon: myIcon3}).addTo(map);
+L.marker([11.388158,	8.663986], {icon: myIcon3}).addTo(map);
+L.marker([11.530769,	8.653721], {icon: myIcon3}).addTo(map);
+
+
+
+// or, add to an existing map:
+map.addControl(new L.Control.Fullscreen());
+
+
+  // Map coordinate display
+  map.on('mousemove',function(e){
+        console.log(e)
+        $('.coordinate').html(`Lat: ${e.latlng.lat} Lng: ${e.latlng.lng}`)
+    })
+
+
+    L.control.browserPrint().addTo(map);
+
+
+
+
+//Geojson load
+var marker = L.markerClusterGroup();
+var taji = L.geoJSON(data, {
+    onEachFeature: function (feature, layer) {
+        layer.bindPopup(feature.properties.COMMUNITY)
+    }
+});
+taji.addTo(marker);
+marker.addTo(map)
+
+//Leaflet layer control
+var baseMaps = {
+    'OSM': osm,
+    'Topo Map': TopoMap,
+    'OpenStreetMap': OpenStreetMap
+}
+
+var overlayMaps = {
+    'GeoJSON Markers': marker
+}
+
+L.control.layers(baseMaps, overlayMaps).addTo(map);
+
+//Leaflet search
+L.Control.geocoder().addTo(map);
+
+//zoom to layer
+$('.zoom-to-layer').click(function(){
+    map.setView([11.978837, 9.07074], 12)
+})
+
+    </script>
